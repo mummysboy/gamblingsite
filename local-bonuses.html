@@ -373,19 +373,16 @@
 
         function handleGamblingQuestion(hasGamblingProblem) {
             if (hasGamblingProblem) {
-                // User says yes (has gambling problem) - open help link in new tab and show bonus form
-                window.open('https://www.1800gambler.net/', '_blank');
-                
-                // Show the bonus form on current page
+                // User says yes (has gambling problem) - redirect to gambling help website
+                window.location.href = 'https://www.1800gambler.net/';
+            } else {
+                // User says no (no gambling problem) - show the bonus listings
                 document.getElementById('gamblingQuestion').classList.add('hidden');
                 document.getElementById('bonusForm').classList.remove('hidden');
                 
                 // Update the location title in the bonus form
                 const locationTitle = document.getElementById('locationTitle');
                 locationTitle.textContent = userLocation;
-            } else {
-                // User says no (no gambling problem) - redirect to gambling help website
-                window.location.href = 'https://www.1800gambler.net/';
             }
         }
 
