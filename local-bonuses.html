@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Local Bonuses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .bonus-form {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            color: white;
+        }
+        .form-title {
+            font-size: 2rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .location-subtitle {
+            font-size: 1rem;
+            color: #ccc;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .bonus-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .bonus-card {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            border: 2px solid #00d4ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+        }
+        .bonus-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 212, 255, 0.4);
+            border-color: #00ff88;
+        }
+        .bonus-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .bonus-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        .bonus-amount {
+            font-size: 1.2rem;
+            color: #00ff88;
+            font-weight: bold;
+        }
+        .bonus-description {
+            color: #ccc;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .bonus-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+        .bonus-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+        .bonus-btn:active {
+            transform: scale(0.98);
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            color: #00ff88;
+        }
+        .age-verification {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .age-question {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .age-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .age-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .age-btn.yes {
+            background-color: #28a745;
+            color: white;
+        }
+        .age-btn.yes:hover {
+            background-color: #218838;
+        }
+        .age-btn.no {
+            background-color: #dc3545;
+            color: white;
+        }
+        .age-btn.no:hover {
+            background-color: #c82333;
+        }
+        .hidden {
+            display: none;
+        }
+        .zip-code-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .zip-question {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .zip-input-group {
+            margin-bottom: 1.5rem;
+        }
+        .zip-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .zip-submit-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .zip-submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .loading-screen {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .loading-message {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .gambling-question {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .gambling-question-text {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .gambling-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .gambling-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .gambling-btn.yes {
+            background-color: #28a745;
+            color: white;
+        }
+        .gambling-btn.yes:hover {
+            background-color: #218838;
+        }
+        .gambling-btn.no {
+            background-color: #dc3545;
+            color: white;
+        }
+        .gambling-btn.no:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="age-verification" id="ageVerification">
+        <h2 class="age-question">Are you 21 or older?</h2>
+        <div class="age-buttons">
+            <button class="age-btn yes" onclick="handleAgeVerification(true)">Yes</button>
+            <button class="age-btn no" onclick="handleAgeVerification(false)">No</button>
+        </div>
+    </div>
+
+    <div class="zip-code-form hidden" id="zipCodeForm">
+        <h2 class="zip-question">What is your zip code?</h2>
+        <div class="zip-input-group">
+            <input type="text" id="zipCode" class="zip-input" placeholder="Enter your zip code" maxlength="5" pattern="[0-9]{5}" required>
+        </div>
+        <button class="zip-submit-btn" onclick="handleZipCodeSubmit()">Continue</button>
+    </div>
+
+    <div class="loading-screen hidden" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <h2 class="loading-message" id="loadingMessage">Finding bonuses...</h2>
+    </div>
+
+    <div class="gambling-question hidden" id="gamblingQuestion">
+        <h2 class="gambling-question-text">Do you have a gambling problem?</h2>
+        <div class="gambling-buttons">
+            <button class="gambling-btn yes" onclick="handleGamblingQuestion(true)">Yes</button>
+            <button class="gambling-btn no" onclick="handleGamblingQuestion(false)">No</button>
+        </div>
+    </div>
+
+    <div class="bonus-form hidden" id="bonusForm">
+        <h1 class="form-title">Here are the bonuses available in <span id="locationTitle"></span></h1>
+        <p class="location-subtitle">Exclusive offers for your area</p>
+        
+        <div class="bonus-container">
+            <div class="bonus-card">
+                <div class="bonus-header">
+                    <span class="bonus-number">BONUS 1</span>
+                    <span class="bonus-amount">Up to $250</span>
+                </div>
+                <p class="bonus-description">First Bet Offer - Get up to $250 paid back in bonus bets if you don't win</p>
+                <button class="bonus-btn" onclick="window.open('https://www.nv.betmgm.com/en/engage/lan/sports/first-bet-offer-nba?utm_source=PPC&utm_medium=Sports&utm_campaign=TMI_BetMGM_NV_[_Sports_]_Brand+Core+[Ex]_AIMax&utm_term=22157139742_174412348512_betmgm&utm_content=&wm=7139020&ben=&cid=22157139742&cn=TMI_MGM_NV_GPPC_ACQ_SBS_17_GS_web_PRO_DR_NA_CPC_N_TMI-NV-MGM-Sports-Prospecting-FBO250_SARR_250__N&po=SARR_250_&fec=nv&pc=17&spc=GS&pl=GPPC&tc=ACQ&mc=SBS&at=TMI&mt=PRO&obj=DR&tre=NA&buy=CPC&ska=N&aw=web&ty=Desktop&la=en&cre=&btag=22157139742&ol=N&gad_source=1&gad_campaignid=22157139742&gbraid=0AAAAACyFTZbm9oKjLULG2L0XEe-1oz5KG&gclid=CjwKCAiA95fLBhBPEiwATXUsxB3jpYfYsFAIA5SdWnkzkP0r8j9F0wPiQXrsa_v-JZvdtpv8X_gHlxoC7Z0QAvD_BwE', '_blank')">Claim Bonus</button>
+            </div>
+            
+            <div class="bonus-card">
+                <div class="bonus-header">
+                    <span class="bonus-number">BONUS 2</span>
+                    <span class="bonus-amount">Welcome Offer</span>
+                </div>
+                <p class="bonus-description">Exclusive welcome bonus for new players - Sign up and get started today</p>
+                <button class="bonus-btn" onclick="window.open('https://ny.betrivers.com/?page=landing', '_blank')">Claim Bonus</button>
+            </div>
+            
+            <div class="bonus-card">
+                <div class="bonus-header">
+                    <span class="bonus-number">BONUS 3</span>
+                    <span class="bonus-amount">Special Promo</span>
+                </div>
+                <p class="bonus-description">Limited time offer - Don't miss out on this exclusive promotion</p>
+                <button class="bonus-btn" onclick="window.open('https://www.fanduel.com/', '_blank')">Claim Bonus</button>
+            </div>
+        </div>
+        
+        <a href="index.html" class="back-link">← Back to Homepage</a>
+    </div>
+
+    <script src="zip-code-lookup.js"></script>
+    <script>
+        let userLocation = ''; // Store user location for later use
+
+        function handleAgeVerification(is21OrOlder) {
+            if (is21OrOlder) {
+                // Hide age verification and show the zip code form
+                document.getElementById('ageVerification').classList.add('hidden');
+                document.getElementById('zipCodeForm').classList.remove('hidden');
+            } else {
+                // Redirect to Chuck E. Cheese website
+                window.location.href = 'https://www.chuckecheese.com/';
+            }
+        }
+
+        async function handleZipCodeSubmit() {
+            const zipCode = document.getElementById('zipCode').value;
+            // Validate zip code (5 digits)
+            if (zipCode && /^\d{5}$/.test(zipCode)) {
+                // Hide zip code form and show loading screen
+                document.getElementById('zipCodeForm').classList.add('hidden');
+                document.getElementById('loadingScreen').classList.remove('hidden');
+                
+                const loadingMessage = document.getElementById('loadingMessage');
+                loadingMessage.textContent = 'Finding bonuses...';
+                
+                // Lookup city and state for the zip code using API
+                const locationString = await getLocationString(zipCode);
+                userLocation = locationString; // Store for later use
+                loadingMessage.textContent = `Finding bonuses in ${locationString}...`;
+                
+                // Simulate loading time (2 seconds total) then show gambling question
+                setTimeout(() => {
+                    document.getElementById('loadingScreen').classList.add('hidden');
+                    document.getElementById('gamblingQuestion').classList.remove('hidden');
+                }, 2000);
+            } else {
+                alert('Please enter a valid 5-digit zip code');
+            }
+        }
+
+        function handleGamblingQuestion(hasGamblingProblem) {
+            if (hasGamblingProblem) {
+                // User says yes (has gambling problem) - open help link in new tab and show bonus form
+                window.open('https://www.1800gambler.net/', '_blank');
+                
+                // Show the bonus form on current page
+                document.getElementById('gamblingQuestion').classList.add('hidden');
+                document.getElementById('bonusForm').classList.remove('hidden');
+                
+                // Update the location title in the bonus form
+                const locationTitle = document.getElementById('locationTitle');
+                locationTitle.textContent = userLocation;
+            } else {
+                // User says no (no gambling problem) - redirect to gambling help website
+                window.location.href = 'https://www.1800gambler.net/';
+            }
+        }
+
+        // Allow Enter key to submit zip code
+        document.addEventListener('DOMContentLoaded', function() {
+            const zipInput = document.getElementById('zipCode');
+            if (zipInput) {
+                zipInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        handleZipCodeSubmit();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
