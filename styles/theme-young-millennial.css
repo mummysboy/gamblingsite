@@ -1,0 +1,714 @@
+/* Young/Millennial Theme - Mobile First Design */
+
+/* Mobile Base Styles (320px+) */
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Reduce decorative elements on mobile */
+body::before,
+body::after {
+    display: none;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+@keyframes spinChip {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.welcome-screen,
+.bonus-form,
+.age-verification,
+.zip-code-form,
+.loading-screen,
+.gambling-question {
+    animation: fadeInUp 0.5s ease-out;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.welcome-screen {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+.welcome-title {
+    font-size: 1.75rem;
+    color: #2d3436;
+    margin-bottom: 0.75rem;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.welcome-title::before {
+    content: '🎰 ';
+    animation: spinChip 3s infinite;
+    display: inline-block;
+}
+
+.welcome-title::after {
+    content: ' 🎰';
+    animation: spinChip 3s infinite reverse;
+    display: inline-block;
+}
+
+.welcome-subtitle {
+    font-size: 1rem;
+    color: #636e72;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.begin-btn {
+    width: 100%;
+    min-height: 48px;
+    padding: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.begin-btn::before {
+    content: '🚀 ';
+}
+
+.begin-btn:active {
+    transform: scale(0.97);
+}
+
+.bonus-form::before,
+.age-verification::before,
+.zip-code-form::before,
+.loading-screen::before,
+.gambling-question::before {
+    display: none;
+}
+
+.bonus-form {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+    position: relative;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.3px;
+}
+
+.form-title::before {
+    content: '💰 ';
+    animation: spinChip 3s infinite;
+    display: inline-block;
+}
+
+.form-title::after {
+    content: ' 💰';
+    animation: spinChip 3s infinite reverse;
+    display: inline-block;
+}
+
+.location-subtitle {
+    font-size: 0.875rem;
+    color: #ffeaa7;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.bonus-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bonus-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid #fff;
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.bonus-card:nth-child(1) { animation-delay: 0.1s; }
+.bonus-card:nth-child(2) { animation-delay: 0.2s; }
+.bonus-card:nth-child(3) { animation-delay: 0.3s; }
+
+.bonus-card::before {
+    content: '🎲';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    opacity: 0.3;
+    animation: spinChip 4s infinite linear;
+}
+
+.bonus-card:active {
+    transform: scale(0.98);
+}
+
+.bonus-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.bonus-number {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #ffeaa7;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+.bonus-number::before {
+    content: '🎰 ';
+}
+
+.bonus-amount {
+    font-size: 1.125rem;
+    color: #fff;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bonus-description {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.bonus-btn {
+    width: 100%;
+    min-height: 48px;
+    padding: 1rem;
+    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    color: #2d3436;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(253, 203, 110, 0.4);
+    position: relative;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bonus-btn::before {
+    content: '🎯 ';
+    position: absolute;
+    left: 1rem;
+    animation: spinChip 2s infinite;
+}
+
+.bonus-btn:active {
+    transform: scale(0.97);
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #ffeaa7;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-link:active {
+    transform: scale(0.98);
+}
+
+.age-verification,
+.zip-code-form,
+.loading-screen,
+.gambling-question {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+.age-question,
+.zip-question,
+.loading-message,
+.gambling-question-text {
+    font-size: 1.25rem;
+    color: #2d3436;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.age-question::before,
+.zip-question::before {
+    content: '🎲 ';
+    animation: spinChip 2s infinite;
+    display: inline-block;
+}
+
+.age-buttons,
+.gambling-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.age-btn,
+.gambling-btn {
+    width: 100%;
+    min-height: 48px;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.age-btn.yes,
+.gambling-btn.yes {
+    background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+}
+
+.age-btn.yes::before,
+.gambling-btn.yes::before {
+    content: '✅ ';
+}
+
+.age-btn.yes:active,
+.gambling-btn.yes:active {
+    transform: scale(0.97);
+}
+
+.age-btn.no,
+.gambling-btn.no {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.age-btn.no::before,
+.gambling-btn.no::before {
+    content: '❌ ';
+}
+
+.age-btn.no:active,
+.gambling-btn.no:active {
+    transform: scale(0.97);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.zip-input-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.zip-input-group::before {
+    content: '📍';
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    z-index: 1;
+}
+
+.zip-input {
+    width: 100%;
+    min-height: 48px;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 3px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.zip-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.zip-submit-btn {
+    width: 100%;
+    min-height: 48px;
+    padding: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.zip-submit-btn::before {
+    content: '🚀 ';
+}
+
+.zip-submit-btn:active {
+    transform: scale(0.97);
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-right: 4px solid #764ba2;
+    border-bottom: 4px solid #f093fb;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+    position: relative;
+}
+
+.loading-spinner::before {
+    content: '🎰';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    animation: spinChip 1s infinite linear;
+}
+
+.loading-message::after {
+    content: ' 🎲';
+    animation: spinChip 2s infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Smooth transitions */
+body > div {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+body > div.hidden {
+    opacity: 0;
+    transform: translateY(15px);
+    pointer-events: none;
+}
+
+body > div:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tablet Styles (768px+) */
+@media (min-width: 768px) {
+    body {
+        padding: 2rem;
+        align-items: center;
+    }
+    
+    body::before {
+        content: '🎰 🎲 🃏 💰';
+        display: block;
+        position: absolute;
+        top: -40px;
+        left: -40px;
+        font-size: 40px;
+        opacity: 0.1;
+        animation: float 20s infinite linear;
+        white-space: nowrap;
+    }
+    
+    body::after {
+        content: '💰 🎲 🎰 🃏';
+        display: block;
+        position: absolute;
+        bottom: -40px;
+        right: -40px;
+        font-size: 40px;
+        opacity: 0.1;
+        animation: float 25s infinite linear reverse;
+        white-space: nowrap;
+    }
+    
+    @keyframes float {
+        0% { transform: translateX(-100px); }
+        100% { transform: translateX(calc(100vw + 100px)); }
+    }
+    
+    .welcome-screen,
+    .bonus-form,
+    .age-verification,
+    .zip-code-form,
+    .loading-screen,
+    .gambling-question {
+        max-width: 500px;
+    }
+    
+    .welcome-screen {
+        padding: 2.5rem 2rem;
+    }
+    
+    .welcome-title {
+        font-size: 2rem;
+    }
+    
+    .welcome-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    .begin-btn:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    }
+    
+    .bonus-form {
+        padding: 2rem;
+    }
+    
+    .form-title {
+        font-size: 2rem;
+    }
+    
+    .bonus-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .bonus-number {
+        font-size: 1.25rem;
+    }
+    
+    .bonus-amount {
+        font-size: 1.25rem;
+    }
+    
+    .age-buttons,
+    .gambling-buttons {
+        flex-direction: row;
+    }
+    
+    .age-btn,
+    .gambling-btn {
+        width: auto;
+        flex: 1;
+    }
+}
+
+/* Desktop Styles (1024px+) */
+@media (min-width: 1024px) {
+    .welcome-screen,
+    .bonus-form,
+    .age-verification,
+    .zip-code-form,
+    .loading-screen,
+    .gambling-question {
+        max-width: 600px;
+    }
+    
+    .welcome-screen {
+        padding: 3rem 2.5rem;
+    }
+    
+    .welcome-title {
+        font-size: 2.5rem;
+    }
+    
+    .welcome-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .bonus-form {
+        padding: 2.5rem;
+    }
+    
+    .form-title {
+        font-size: 2.5rem;
+        animation: pulse 2s infinite;
+    }
+    
+    .location-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .bonus-container {
+        gap: 1.5rem;
+    }
+    
+    .bonus-card {
+        padding: 1.5rem;
+    }
+    
+    .bonus-card:hover {
+        transform: translateY(-8px) scale(1.02) rotate(1deg);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        border-color: #ffeaa7;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .bonus-header {
+        margin-bottom: 1rem;
+    }
+    
+    .bonus-number {
+        font-size: 1.5rem;
+    }
+    
+    .bonus-amount {
+        font-size: 1.3rem;
+        animation: pulse 2s infinite;
+    }
+    
+    .bonus-description {
+        font-size: 1rem;
+    }
+    
+    .bonus-btn {
+        font-size: 1.2rem;
+    }
+    
+    .bonus-btn:hover {
+        transform: scale(1.05) translateY(-2px);
+        box-shadow: 0 8px 30px rgba(253, 203, 110, 0.6);
+    }
+    
+    .back-link:hover {
+        transform: translateX(-5px);
+    }
+    
+    .age-verification,
+    .zip-code-form,
+    .loading-screen,
+    .gambling-question {
+        padding: 2.5rem;
+    }
+    
+    .age-question,
+    .zip-question,
+    .loading-message,
+    .gambling-question-text {
+        font-size: 1.8rem;
+    }
+    
+    .age-btn.yes:hover,
+    .gambling-btn.yes:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 184, 148, 0.5);
+    }
+    
+    .age-btn.no:hover,
+    .gambling-btn.no:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+    }
+    
+    .zip-input {
+        font-size: 1.2rem;
+    }
+    
+    .zip-submit-btn:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    }
+}

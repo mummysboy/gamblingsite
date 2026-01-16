@@ -3,39 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Local Bonuses</title>
-    <link rel="stylesheet" href="" id="themeStylesheet">
-    <script>
-        // Load theme based on URL parameter
-        (function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const theme = urlParams.get('theme') || 'young-millennial';
-            
-            const themes = {
-                'young-millennial': 'styles/theme-young-millennial.css',
-                'professional': 'styles/theme-professional.css',
-                'luxury': 'styles/theme-luxury.css',
-                'bold-edgy': 'styles/theme-bold-edgy.css',
-                'classic': 'styles/theme-classic.css'
-            };
-            
-            const stylesheet = document.getElementById('themeStylesheet');
-            if (themes[theme]) {
-                stylesheet.href = themes[theme];
-            } else {
-                stylesheet.href = themes['young-millennial'];
-            }
-        })();
-    </script>
+    <title>Find Local Bonuses - Young/Millennial</title>
+    <link rel="stylesheet" href="styles/theme-young-millennial.css">
 </head>
 <body>
-    <div class="welcome-screen" id="welcomeScreen">
-        <h1 class="welcome-title">Signup Bonuses</h1>
-        <p class="welcome-subtitle">Discover the best gambling bonuses available in your area</p>
-        <button class="begin-btn" onclick="handleBegin()">Begin</button>
-    </div>
-
-    <div class="age-verification hidden" id="ageVerification">
+    <div class="age-verification" id="ageVerification">
         <h2 class="age-question">Are you 21 or older?</h2>
         <div class="age-buttons">
             <button class="age-btn yes" onclick="handleAgeVerification(true)">Yes</button>
@@ -103,12 +75,6 @@
     <script src="zip-code-lookup.js"></script>
     <script>
         let userLocation = ''; // Store user location for later use
-
-        function handleBegin() {
-            // Hide welcome screen and show age verification
-            document.getElementById('welcomeScreen').classList.add('hidden');
-            document.getElementById('ageVerification').classList.remove('hidden');
-        }
 
         function handleAgeVerification(is21OrOlder) {
             if (is21OrOlder) {

@@ -3,30 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Local Bonuses</title>
-    <link rel="stylesheet" href="" id="themeStylesheet">
-    <script>
-        // Load theme based on URL parameter
-        (function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const theme = urlParams.get('theme') || 'young-millennial';
-            
-            const themes = {
-                'young-millennial': 'styles/theme-young-millennial.css',
-                'professional': 'styles/theme-professional.css',
-                'luxury': 'styles/theme-luxury.css',
-                'bold-edgy': 'styles/theme-bold-edgy.css',
-                'classic': 'styles/theme-classic.css'
-            };
-            
-            const stylesheet = document.getElementById('themeStylesheet');
-            if (themes[theme]) {
-                stylesheet.href = themes[theme];
-            } else {
-                stylesheet.href = themes['young-millennial'];
-            }
-        })();
-    </script>
+    <title>Find Local Bonuses - Luxury</title>
+    <link rel="stylesheet" href="styles/theme-luxury.css">
 </head>
 <body>
     <div class="welcome-screen" id="welcomeScreen">

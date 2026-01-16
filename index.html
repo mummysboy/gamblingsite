@@ -3,29 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Homepage - Theme Selection</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
         }
         .welcome-message {
             font-size: 2rem;
             color: #333;
             text-align: center;
+            margin-bottom: 2rem;
+            font-weight: bold;
         }
+        .theme-selection {
+            margin-top: 2rem;
+        }
+        .theme-selection h2 {
+            font-size: 1.25rem;
+            color: #555;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .theme-link {
+            display: block;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        .theme-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+        .theme-link.young { background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
+        .theme-link.professional { background: linear-gradient(135deg, #3182ce 0%, #2c5aa0 100%); box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3); }
+        .theme-link.luxury { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); box-shadow: 0 4px 15px rgba(26, 26, 46, 0.3); }
+        .theme-link.bold { background: linear-gradient(135deg, #000000 0%, #333333 100%); box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3); }
+        .theme-link.classic { background: linear-gradient(135deg, #8b7355 0%, #6b5b3d 100%); box-shadow: 0 4px 15px rgba(139, 115, 85, 0.3); }
     </style>
 </head>
 <body>
-    <div class="welcome-message">
-        Welcome to the homepage
-        <br>
-        <a href="local-bonuses.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">Find Local Bonuses</a>
+    <div class="container">
+        <div class="welcome-message">
+            Welcome to the Homepage
+        </div>
+        <div class="theme-selection">
+            <h2>Select a Theme:</h2>
+            <div class="theme-grid">
+                <a href="local-bonuses-young.html" class="theme-link young">
+                    Young / Millennial
+                </a>
+                <a href="local-bonuses-professional.html" class="theme-link professional">
+                    Professional / Corporate
+                </a>
+                <a href="local-bonuses-luxury.html" class="theme-link luxury">
+                    Luxury / High-end
+                </a>
+                <a href="local-bonuses-bold.html" class="theme-link bold">
+                    Bold / Edgy
+                </a>
+                <a href="local-bonuses-classic.html" class="theme-link classic">
+                    Classic / Traditional
+                </a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
